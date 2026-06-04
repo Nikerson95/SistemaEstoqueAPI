@@ -43,11 +43,26 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost("CriarAutor")]
-        public async Task<ActionResult<ResponseModel<AutorModel>>> CriarAutor(AutorCriacaoDto autorCriacaoDto)
+        public async Task<ActionResult<ResponseModel<List<AutorModel>>>> CriarAutor(AutorCriacaoDto autorCriacaoDto)
         {
-            var autores = await _autorInterface.CriarAutor(autorCriacaoDto);
+            var autores = await _autorService.CriarAutor(autorCriacaoDto);
             return Ok(autores);
 
         }
+        [HttpPut("EditarAutor")]
+        public async Task<ActionResult<ResponseModel<AutorModel>>> EditarAutor(AutoredicaoDto autorEdicaoDto)
+        {
+            var autores = await _autorService.EditarAutor(autorEdicaoDto);
+            return Ok(autores);
+        }
+
+
+        [HttpDelete("ExcluirAutor")]
+        public async Task<ActionResult<ResponseModel<List<AutorModel>>>> ExcluirAutor(int idAutor)
+        {
+            var autores = await _autorService.ExcluirAutor(idAutor);
+            return Ok(autores);
+        }
     }
+
 }

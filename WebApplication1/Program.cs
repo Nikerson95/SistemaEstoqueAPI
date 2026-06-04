@@ -2,6 +2,7 @@ using WebApplication1.DATA;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using WebApplication1.Services.Autor;
+using WebApplication1.Services.Livro;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<AutorInterface, IAutorService>();
+builder.Services.AddScoped<ILivroInterface  ,LivroService>();
 
 builder.Services.AddDbContext<AppDbcontext>(options =>
 { 
